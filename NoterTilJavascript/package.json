@@ -1,0 +1,28 @@
+{
+  "name": "oskarsnoter",
+  "version": "0.1",
+  "description": "noter om hidtil dækkede emner i JS",
+  "type": "module",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KeaAndl/mandatory-i-OskarThormar#"
+  },
+  "keywords": [
+    "noter",
+    "praktik",
+    "showcase",
+    "læringsmål",
+    "javascript"
+  ],
+  "author": "oskarthormar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KeaAndl/mandatory-i-OskarThormar/issues"
+  },
+  "homepage": "https://github.com/KeaAndl/mandatory-i-OskarThormar#readme",
+  "dependencies": {
+    "express": "^4.21.2",
+    "oskarsnoter": "file:"
+  }
+}
