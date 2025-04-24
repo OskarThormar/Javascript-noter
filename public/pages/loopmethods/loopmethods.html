@@ -1,0 +1,132 @@
+<h2>
+    Understands the use case for Nodemon and its limitation for development.
+</h2>
+<div class="quote-box">
+    Nodemon genstarter automatisk en Node.js-server, når filer ændres, hvilket sparer tid under udvikling.<br>
+Bruges primært i udviklingsmiljøer for at undgå manuel genstart af serveren efter hver ændring.<br>
+Installeres globalt eller lokalt og køres med nodemon app.js i stedet for node app.js.<br>
+Overvåger kun filændringer i projektmappen, men kan konfigureres til at ignorere eller overvåge bestemte filer.<br>
+Understøtter ikke produktionsmiljøer, da den er designet til udvikling og kan forbruge unødvendige ressourcer.<br>
+Kan have problemer med caching af moduler, hvilket nogle gange kræver en manuel genstart.<br>
+Kan konfigureres via en nodemon.json-fil for at justere adfærd og overvågning af filer.<br>
+</div>
+
+<h2>
+    Can use loop methods (+map, +filter, %reduce). Can choose the right one at the appropriate time:<br>
+
+We wish to use loop methods and in a functional manner (avoiding side effects).<br>
+
+Only use for loops in JavaScript when finger counting.
+</h2>
+<div class="quote-box">
+    map bruges til at lave en ny array ved at transformere hvert element.<br>
+filter bruges til at fjerne elementer, som ikke opfylder en betingelse.<br>
+reduce samler en array til én værdi, fx en sum eller et objekt.<br>
+Loop-metoder ændrer ikke den originale array, men returnerer en ny.<br>
+Brug funktionel programmering og undgå side effects (ændring af variabler udenfor funktionen).<br>
+For-loops bør kun bruges, når man "tæller på fingrene", fx ved simple iterationer uden transformation.<br>
+Reducerer behovet for midlertidige variabler, da resultatet gemmes direkte i den nye array.<br>
+</div>
+
+<h2>
+    Understands why a functional approach to loops is to be preferred and how to implement it without side effects.
+</h2>
+<div class="quote-box">
+    En funktionel tilgang betyder, at loops ikke ændrer data direkte, men returnerer en ny værdi.<br>
+Metoder som map, filter og reduce bruges, fordi de ikke muterer den originale array.<br>
+Side effects opstår, når en funktion ændrer variabler udenfor sig selv, hvilket gør koden sværere at debugge.<br>
+Reducerer behovet for midlertidige variabler og gør kode mere kompakt.<br>
+</div>
+
+<h2>
+    Can use the right terminology when it comes to the different parts of an URL.
+</h2>
+<div class="quote-box">
+    Protocol (fx https://) angiver, hvordan data sendes mellem klient og server.<br>
+Domain eller host (fx example.com) er adressen på serveren.<br>
+Path (fx /products) viser, hvilken ressource der tilgås på serveren.<br>
+Query parameters (fx ?category=shoes&color=blue) bruges til at sende ekstra data til serveren.<br>
+Fragment (fx #section1) refererer til en specifik del af en side, men sendes ikke til serveren.<br>
+Port (fx :3000) angiver, hvilken port serveren lytter på (standard er 80 for HTTP og 443 for HTTPS).<br>
+</div>
+
+<h2>
+    Can make a POST request and parse it in Express.
+</h2>
+<div class="quote-box">
+    En POST request bruges til at sende data til en server, ofte for at oprette nye ressourcer.<br>
+Data sendes i request body, i modsætning til GET, hvor data sendes i URL'en.<br>
+Express håndterer POST requests med app.post(path, callback).<br>
+Middleware som express.json() kræves for at parse JSON-data fra request body.<br>
+Dataen kan tilgås via req.body, når den er parset korrekt.<br>
+POST bruges typisk med fetch() fra frontend for at sende data til serveren.<br>
+</div>
+
+<h2>
+    Understands the need for body parsing and how to do it in Express.<br>
+</h2>
+<div class="quote-box">
+    Body parsing er nødvendigt, fordi data i en POST/PUT request sendes i request body og ikke automatisk kan læses i Express.<br>
+Express kan ikke læse request body direkte, så middleware skal bruges til at parse den.<br>
+express.json() middleware gør det muligt at parse JSON-data, så det kan tilgås via req.body.<br>
+express.urlencoded({ extended: true }) bruges til at parse form-data, som sendes fra HTML-formularer.<br>
+Hvis body parsing ikke er aktiveret, vil req.body være undefined.<br>
+Forskellige formater kræver forskellige parsere – JSON (express.json()), URL-encoded (express.urlencoded()), eller rå tekst (express.text()).<br>
+</div>
+
+<h2>
+    code snippets:
+</h2>
+<div class="quote-box">
+    // forEach, map, filter, reduce, findIndex, find<br>
+    <br>
+const myNumbers = [1, 2, 3, 4, 5, 6];<br>
+<br>
+// assignment: get a list of double the numbers<br>
+<br>
+myNumbers.map((myNumbers) => myNumbers * 2);<br>
+<br>
+console.log(myNumbers);<br>
+<br>
+const satellites = [<br>
+    {<br>
+        name: "International Space Station",<br>
+        height: 12000<br>
+    },<br>
+    {<br>
+        name: "MIR",<br>
+        height: 0<br>
+    },<br>
+    {<br>
+        name: "James Webb",<br>
+        height: 27000<br>
+    }<br>
+];<br>
+<br>
+const newSatelliteHeights = satellites.map((satellite) => {<br>
+    if (satellite.name === "MIR") {<br>
+        return satellite;<br>
+    }<br>
+    <br>
+    return {<br>
+        name: satellite.name,<br>
+        height: satellite.height - 3000<br>
+    };<br>
+});<br>
+<br>
+console.log(newSatelliteHeights);<br>
+<br>
+// const annoyingNumbers = [12.542356, 17.343259];<br>
+<br>
+// annoyingNumbers.reduce();<br>
+<br>
+// assignment: make a list that reacts as many times as above the thumbs up<br>
+<br>
+const listOfReactions = ["thumbs down", "thumbs down", "thumbs down"];<br>
+<br>
+const updatedReactions = listOfReactions.map((reactions) => reactions = "thumbs up");<br>
+<br>
+console.log(updatedReactions);<br>
+<br>
+listOfReactions.forEach((value, index, array) => console.log(index, value, array));
+</div>

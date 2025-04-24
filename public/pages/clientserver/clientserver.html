@@ -1,0 +1,90 @@
+<h2>
+    Fetching in the client vs. fetching in the backend.
+</h2>
+<div class="quote-box">
+    Fetching på klienten sker i browseren og bruges til at hente data direkte fra en API eller server.<br>
+Fetching i backend sker på serveren og bruges til at hente data fra en ekstern API, database eller en anden server.<br>
+</div>
+
+<h2>
+    Know how to define environment variables natively in Node.js (natively = not using any libraries).
+</h2>
+<div class="quote-box">
+    Miljøvariabler bruges til at gemme følsomme oplysninger som API-nøgler, databaser eller konfigurationsindstillinger.<br>
+Node.js kan tilgå miljøvariabler via process.env, som indeholder alle systemets variabler.<br>
+Variabler kan sættes direkte i terminalen før kørsel af en Node.js-fil.<br>
+På Windows bruges set og på macOS/Linux export til at definere dem i terminalen.<br>
+Kan også sættes midlertidigt ved at angive dem før en kommando.<br>
+I en Node.js-fil kan process.env.VARIABEL_NAVN bruges til at hente værdien.<br>
+</div>
+
+<h2>
+    Can define and run scripts with NPM.
+</h2>
+<div class="quote-box">
+    NPM scripts bruges til at automatisere opgaver, som at starte en server, bygge et projekt eller køre tests.<br>
+Defineres i package.json under "scripts"-sektionen og kan køres med npm run script-navn.<br>
+Standard scripts (start, test) kan køres uden run, fx npm start i stedet for npm run start.<br>
+Kan kalde kommandoer som node, nodemon, eslint, eller custom scripts.<br>
+Shell-kommandoer kan inkluderes, fx "build": "rm -rf dist && webpack".<br>
+Flere scripts kan kædes sammen ved at bruge && eller & (parallel execution).<br>
+</div>
+
+<h2>
+    Structuring HTML with semantic HTML. Knows how to avoid having a footer in the middle of the page.
+</h2>
+<div class="quote-box">
+    Semantisk HTML betyder at bruge de korrekte tags, som beskriver sidens indhold og forbedrer tilgængelighed og SEO.<br>
+Struktur bør følge en logisk opbygning med header, main, section, article, aside og footer.<br>
+En footer bør altid være placeret i bunden af siden, ikke midt i layoutet.<br>
+Problemer med en "flyvende" footer opstår ofte, hvis main-indholdet ikke fylder nok eller hvis footer er placeret inde i en anden container.<br>
+CSS Flexbox eller Grid kan bruges til at sikre, at footeren forbliver i bunden af siden, selv når der er lidt indhold.<br>
+Brug af min-height: 100vh; på body eller main sikrer, at footeren ikke rykker op, hvis der er lidt indhold.<br>
+</div>
+
+<h2>
+    Can point to which files are client files and which are server files.
+</h2>
+<div class="quote-box">
+    Klientfiler kører i browseren, mens serverfiler kører i Node.js på serveren.<br>
+Klientfiler inkluderer HTML, CSS, JavaScript (frontend) og assets som billeder og skrifttyper.<br>
+Serverfiler indeholder backend-kode skrevet i Node.js (fx Express-server, API'er, databaseforbindelser).<br>
+Klientfiler kan aldrig interagere direkte med databasen, det håndteres via serveren.<br>
+I en fullstack-applikation sender klienten requests til serveren, som behandler dem og sender svar tilbage.<br>
+</div>
+
+<h2>
+    Understands one way to style a footer so that it appears at the bottom, always.
+</h2>
+<div class="quote-box">
+    Footeren skal være i bunden af siden, selv når der er lidt indhold.<br>
+Problemet opstår ofte, hvis main ikke fylder nok, så footeren rykker op på skærmen.<br>
+Kan løses med CSS Flexbox, Grid eller position: fixed;.<br>
+flex-grow: 1; bruges til at skubbe footeren ned, når der er lidt indhold.<br>
+position: fixed; kan bruges, men gør footeren statisk på skærmen.<br>
+</div>
+
+<h2>
+    code snippets:
+</h2>
+<div class="quote-box">
+    import express from 'express';<br>
+const app = express();<br>
+app.use(express.static("public"));<br>
+<br>
+import pagesRouter from './routers/pagesRouter.js';<br>
+app.use(pagesRouter);<br>
+<br>
+import matchesRouter from './routers/pagesRouter.js';<br>
+app.use(matchesRouter);<br>
+<br>
+<br>
+const PORT = Number(process.env.PORT) || 8080;<br>
+const server = app.listen(PORT, (error) => {<br>
+    if (error) {<br>
+        console.log("ERROR");<br>
+    } else {<br>
+        console.log("Server is running on port", server.address().port)<br>
+    }<br>
+});
+</div>

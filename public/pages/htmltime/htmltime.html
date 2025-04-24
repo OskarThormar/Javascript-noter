@@ -1,0 +1,100 @@
+<h2>
+    Can create a full CRUDable REST API that follows conventions.
+</h2>
+<div class="quote-box">
+    CRUD (Create, Read, Update, Delete) er de fire grundlæggende operationer i et REST API.<br>
+API'et skal følge REST-konventioner, hvor hver ressourcetype har sin egen URL og bruger de korrekte HTTP-metoder.<br>
+Bruger POST til at oprette, GET til at læse, PUT/PATCH til at opdatere og DELETE til at slette data.<br>
+Ressourcenavne er altid flertal (fx /users i stedet for /user).<br>
+Bruger route-parametre (/users/:id) til at håndtere individuelle elementer.<br>
+Data sendes og modtages som JSON, og body parsing er nødvendigt for POST og PUT/PATCH.<br>
+API'et skal returnere meningsfulde statuskoder (fx 201 Created, 400 Bad Request, 404 Not Found).<br>
+</div>
+
+<h2>
+    Can get the Date in Javascript.
+</h2>
+<div class="quote-box">
+    new Date() opretter et nyt dato-objekt, der repræsenterer den aktuelle dato og tid.<br>
+Kan hente specifikke dele af datoen som år, måned, dag, time osv. med metoder som:<br>
+getFullYear() → Henter årstallet<br>
+getMonth() → Henter måneden (0-baseret, januar = 0)<br>
+getDate() → Henter dagen i måneden<br>
+getDay() → Henter ugedagen (0 = søndag, 6 = lørdag)<br>
+getHours(), getMinutes(), getSeconds() → Henter tidspunkter<br>
+Kan formatere datoen som string med toISOString() eller toLocaleDateString().<br>
+Tidszoner påvirker datoer, og Date-objektet bruger som standard UTC.<br>
+</div>
+
+<h2>
+    Can write a fetch request without hesitation.
+</h2>
+<div class="quote-box">
+    fetch() bruges til at lave HTTP requests til en server for at hente eller sende data.<br>
+Returnerer en Promise, så .then() eller async/await bruges til at håndtere svaret.<br>
+Kan hente data med GET og sende data med POST, PUT, PATCH eller DELETE.<br>
+Kræver headers som "Content-Type": "application/json", når der sendes JSON-data.<br>
+Fejlhåndtering er vigtig, da et request kan fejle (brug .catch() eller try/catch).<br>
+Kan bruges med REST API’er for at interagere med en database eller ekstern tjeneste.<br>
+</div>
+
+<h2>
+    code snippets:
+</h2>
+<div class="quote-box">
+    const express = require('express');<br>
+const app = express();<br>
+<br>
+console.log(new Date()); // UTC<br>
+<br>
+console.log(Date()); // Local date time<br>
+<br>
+console.log(Date.now()); // Epoch (seconds since 1970 Jan 1st)<br>
+<br>
+// assignment: Create a route can /months which returns the currenct month as a response<br>
+const months = [<br>
+    "Januar", "Februar", "Marts", "April", "Maj", "Juni", "Juli", "August", "September", "Oktober", "November", "December"<br>
+];<br>
+console.log(months);<br>
+<br>
+const days = [<br>
+    "Søndag", "Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag", "Lørdag"<br>
+];<br>
+console.log(days);<br>
+<br>
+app.get("/month/v1", (req, res) => {<br>
+    const currentMonth = months[new Date().getMonth()];<br>
+    <br>
+    res.send({ data: currentMonth });<br>
+});<br>
+<br>
+app.get("/months/v2", (req, res) => {<br>
+    const currentMonth = new Date().toLocaleDateString("en-uk", { month: "long" });<br>
+    <br>
+    res.send({ data: currentMonth })<br>
+});<br>
+<br>
+console.log(Date().split(" ")[1]);<br>
+<br>
+app.get("/months/v3", (req, res) => {<br>
+    const currentMonth = new Date().split(" ")[1];<br>
+    <br>
+    res.send({ data: currentMonth })<br>
+});<br>
+<br>
+let currentMonth = new Date().getMonth;<br>
+<br>
+console.log(currentMonth);<br>
+<br>
+// assignment implement /days that returns the weekday as a word<br>
+<br>
+app.get("/days", (req, res) => {<br>
+    const currentDay = days[new Date().getDay()];<br>
+    <br>
+    res.send({ data: currentDay });<br>
+});<br>
+<br>
+<br>
+const PORT = 8080;<br>
+app.listen(PORT, () => console.log("Server is running on port", PORT));<br>
+</div>

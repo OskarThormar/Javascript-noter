@@ -1,0 +1,108 @@
+<h2>
+    Can work with both types of import/export in HTML.
+</h2>
+<div class="quote-box">
+    Classic /script/ imports indlæser eksterne filer med /script/-tagget.<br>
+ES Modules (import/export) moderne metode til at importere og eksportere funktioner/variabler mellem filer.<br>
+Kræver type="module" i /script/-tagget i HTML.<br>
+    Bruger export i én fil og import i en anden.<br>
+    Fordel: Forhindrer globale variabler og understøtter modulopdeling af kode.<br>
+</div>
+
+<h2>
+    Can import/export in both ways in Node.js (CommonJS and ES Modules). Understands the pros of using ES Modules.
+</h2>
+<div class="quote-box">
+    CommonJS (require/module.exports) Standard i Node.js.<br>
+ES Modules (import/export) Moderne tilgang, der bruges i browseren og i nyere Node.js-versioner.<br>
+Bruges i Node.js som standard.<br>
+Filer skal eksportere funktioner/objekter med module.exports.<br>
+Import sker med require().<br>
+</div>
+
+<h2>
+    Understands the security need for serving static files and can do it in Express.
+</h2>
+<div class="quote-box">
+    Statiske filer (HTML, CSS, billeder, JS) skal serveres sikkert for at undgå uautoriseret adgang til følsomme filer.<br>
+Express giver express.static() til at servere en mappe med offentlige filer.<br>
+Kun filer i den specificerede mappe er tilgængelige, alt andet forbliver beskyttet.<br>
+Mappevalg er vigtigt, typisk bruger man en /public-mappe, så følsomme filer ikke eksponeres.<br>
+Kan sætte adgangsbegrænsninger ved at konfigurere middleware eller CORS.<br>
+Brug af path.join(__dirname, "public") sikrer kompatibilitet på tværs af systemer.<br>
+</div>
+<h2>
+    Can argue for a better way to structure the frontend (assets, pages) and how to structure HTML.
+</h2>
+<div class="quote-box">
+    En god struktur gør koden mere overskuelig, genanvendelig og nemmere at vedligeholde.<br>
+Assets (CSS, JS, billeder) bør organiseres i mapper for at adskille stil, funktionalitet og medier.<br>
+En klar HTML-struktur med semantiske tags (header, main, section, footer) forbedrer læsbarhed og SEO.<br>
+CSS og JavaScript bør holdes adskilt, eksterne filer (style.css, app.js) fremfor inline kode i HTML.<br>
+Komponent-baseret struktur kan hjælpe med genanvendelighed.<br>
+</div>
+
+<h2>
+    Can recount the number of ways and approaches to redirection.
+</h2>
+<div class="quote-box">
+    Redirects bruges til at sende brugeren fra én URL til en anden af forskellige grunde (navigation, sikkerhed, opdaterede sider).<br>
+Kan ske på både frontend (klient) og backend (server).<br>
+</div>
+<h2>
+    Understands the difference between client-side redirection and server-side.
+</h2>
+<div class="quote-box">
+    Client-side redirection sker i browseren og ændrer URL'en uden at involvere serveren direkte.<br>
+Server-side redirection sker på serveren og sender en ny HTTP-respons, der instruerer klienten til at navigere til en ny side.<br>
+</div>
+
+<h2>
+    code snippets:
+</h2>
+<div class="quote-box">
+    //const express = require('express');<br>
+    <br>
+import express from 'express';<br>
+<br>
+import path from 'path';<br>
+<br>
+//const { parties } = require('./util/partiesLibrary.js');<br>
+//console.log(parties);<br>
+<br>
+console.log(path.resolve("public/frontpage/frontpage.html"))<br>
+<br>
+<br>
+const app = express();<br>
+<br>
+// import partiesLibraryESModules from './util/partiesLibraryES.js'<br>
+<br>
+app.use(express.static('public'));<br>
+<br>
+let visitorCount=0;<br>
+<br>
+app.get("/", (req, res) => {<br>
+    res.sendFile(path.resolve("public/frontpage/frontpage.html"));<br>
+});<br>
+<br>
+app.get("/partypage", (req, res) => {<br>
+    res.sendFile(path.resolve("public/partypage/partyPage.html"));<br>
+});<br>
+<br>
+// task create a route /visitorcounts that returns the visitor count<br>
+<br>
+app.get("/visitorcounts", (req, res) => {<br>
+    visitorCount++;<br>
+    res.send({ data: visitorCount });<br>
+});<br>
+<br>
+const PORT = 8080;<br>
+app.listen(PORT, (error) => {<br>
+    if (error) {<br>
+        console.log("ERROR");<br>
+        return;<br>
+    } else {<br>
+        console.log("Server is running on port", PORT);<br>
+    }<br>
+});<br>
+</div>

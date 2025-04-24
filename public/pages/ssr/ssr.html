@@ -1,0 +1,108 @@
+<h2>
+    Understands how code and its placement affects application memory and efficiency.
+</h2>
+<div class="quote-box">
+    Kodeplacering påvirker, hvordan og hvornår ressourcer indlæses og bruges.
+Globalt definerede variabler forbliver i hukommelsen, mens lokalt definerede variabler frigives, når funktionen afsluttes.<br>
+Tunge operationer (fx loops og API-kald) bør optimeres for at reducere CPU- og hukommelsesforbrug.<br>
+let og const hjælper med at begrænse scope, så unødvendige variabler ikke fylder i hukommelsen.<br>
+Asynkron kode (async/await, event listeners) bør håndteres korrekt, så der ikke opbygges unødvendige processer.<br>
+DOM-manipulation bør minimeres, da hyppige ændringer i DOM'en kan være ressourcekrævende.<br>
+Lazily loaded assets (billeder, scripts) forbedrer performance ved kun at loade det nødvendige indhold.<br>
+Memory leaks kan opstå, hvis event listeners eller timers (setInterval) ikke ryddes op efter brug.<br>
+</div>
+
+<h2>
+    Understands the arguments for and against SSR vs. CSR when it comes to:<br>
+
+Load time.<br>
+
+Ressources spent (duration, when and where).<br>
+
+SEO.<br>
+
+Dealing with CORS. (SSR has no CORS issues.)
+</h2>
+<div class="quote-box">
+    SSR (Server-Side Rendering) vs. CSR (Client-Side Rendering) handler om, hvor HTML'en genereres, på serveren eller i browseren.<br>
+    SSR: Hurtigere første load, fordi serveren sender færdigrenderet HTML.<br>
+CSR: Langsommere første load, da JavaScript skal hente og bygge siden i browseren.<br>
+CSR kan føles hurtigere ved navigation, fordi data hentes asynkront uden en fuld reload.<br>
+SSR: Serveren gør det tunge arbejde → hurtigere for brugeren, men kræver mere serverkraft.<br>
+CSR: Klienten gør arbejdet → mindre belastning på serveren, men kræver mere fra brugerens enhed.<br>
+</div>
+
+<h2>
+    Can argue for better ways to structure the code and how to avoid files that are too long.
+</h2>
+<div class="quote-box">
+    Opdeling af kode i mindre filer gør den mere overskuelig og lettere at vedligeholde.<br>
+
+Single Responsibility Principle (SRP) → Hver fil/funktion bør have ét ansvar.
+
+Modularisering → Flyt funktioner, konstanter og API-kald til separate filer/moduler.<br>
+Store funktioner bør opdeles i mindre genbrugelige funktioner.<br>
+Brug imports (import/export eller require/module.exports) til at hente kode fra andre filer.<br>
+For frontend-projekter, opdel komponenter i mindre filer fremfor én stor fil.<br>
+En ren kodebase gør samarbejde nemmere og reducerer fejl.<br>
+</div>
+
+<h2>
+    Can create an Express Router by heart.
+</h2>
+<div class="quote-box">
+    Express Router bruges til at strukturere ruter bedre ved at opdele dem i separate filer.<br>
+Forhindrer én stor app.js fil, så hver ressource (fx brugere, produkter) har sin egen rute-fil.<br>
+Routeren eksporteres og importeres i hovedfilen (app.js).<br>
+Gør det nemmere at håndtere middleware og specifikke ruter for forskellige ressourcer.<br>
+</div>
+
+<h2>
+    code snippets:
+</h2>
+<div class="quote-box">
+    import fs from 'fs';<br>
+    <br>
+export function readPage(path) {<br>
+    return fs.readFileSync(path).toString();<br>
+}<br>
+<br>
+const header = readPage('./public/components/header/header.html');<br>
+const footer = readPage('./public/components/footer/footer.html');<br>
+<br>
+export function construcPage(pageContent, options={}) {<br>
+    return header<br>
+        .replace('$NAV_TITLE', options.pageTitle || 'DogInder')<br>
+        .replace('$CSS_LINKS$', options.cssLinks || '')<br>
+    + pageContent <br>
+    + footer;<br>
+}<br>
+<br>
+<br>
+-----------------------------------------------------------<br>
+<br>
+import { fakerEN_IN } from '@faker-js/faker';<br>
+export async function getMatches(numberOfMatches = 2) {<br>
+    const promises = [];<br>
+    for (let i = 0; i < numberOfMatches; i++) {<br>
+        const promise = fetch("https://dog.ceo/api/breeds/image/random")<br>
+        .then(response => response.json())<br>
+        console.log(promise)<br>
+        promises.push(promise)<br>
+    }<br>
+    const results = await Promise.all(promises);<br>
+    const matches = results.map((result) => ({ image: result.message, name: "Fido" }));<br>
+    return matches;<br>
+}<br>
+<br>
+function getIndianProfile() {<br>
+    return {<br>
+        name: fakerEN_IN.person.fullName(),<br>
+        bio: fakerEN_IN.person.bio(),<br>
+        streetAddress: fakerEN_IN.location.streetAddress(),<br>
+        city: fakerEN_IN.location.city()<br>
+    };<br>
+}<br>
+<br>
+console.log(getIndianProfile())
+</div>

@@ -1,0 +1,172 @@
+<h2>
+    Understand scoping in Javascript and know to always use const if you can get away with it otherwise let.
+</h2>
+<div class="quote-box">
+    Global Scope → Variablen kan tilgås overalt.<br>
+Function Scope → Variablen lever kun i funktionen.<br>
+Block Scope (let og const) → Lever kun i {}.<br>
+</div>
+
+<h2>
+    Understand advanced things about functions in Javascript
+</h2>
+<div class="quote-box">
+    Funktioner kan:<br>
+Returnere andre funktioner<br>
+Gemmes i variabler<br>
+Kaldes med forskellige syntakser<br>
+</div>
+
+<h2>
+    Can write callback functions with different syntax.
+</h2>
+<div class="quote-box">
+    En callback er bare en funktion, der sendes som argument til en anden funktion.<br>
+Arrow functions forkorter syntaksen, men ændrer this-adfærd.<br>
+Callbacks bruges ofte i asynkrone operationer som setTimeout, fetch() og event listeners.<br>
+</div>
+
+<h2>
+    Understands the function of NPM and can compare it with other package managers.
+</h2>
+<div class="quote-box">
+    NPM bruges til at installere og administrere pakker i JavaScript-projekter.<br>
+Alternativer inkluderer Yarn (hurtigere downloads) og PNPM (pladsbesparende).<br>
+package.json holder styr på projektets afhængigheder og scripts.<br>
+node_modules/ mappen indeholder alle installerede pakker.<br>
+Med npm install hentes alle pakker fra package.json automatisk.<br>
+Global vs. lokal installation – globale pakker bruges overalt, lokale er specifikke for et projekt.<br>
+Package managers gør det lettere at holde kode opdateret og dele den med andre.<br>
+</div>
+
+<h2>
+    Understands the different purposes of package.json and can set it up by hand.
+</h2>
+<div class="quote-box">
+    package.json fungerer som et projektets konfigurationsfil og beskriver afhængigheder, scripts og metadata.<br>
+Indeholder oplysninger som navn, version, forfatter og licens.<br>
+Holder styr på dependencies (nødvendige pakker) og devDependencies (kun til udvikling).<br>
+Scripts som "start" og "test" kan defineres og køres via npm run.<br>
+Kan oprettes manuelt ved at skrive filen fra bunden eller genereres med npm init.<br>
+Bruges af package managers til at installere og administrere pakker i et projekt.<br>
+</div>
+
+<h2>
+    Can create a server with Express from memory.
+</h2>
+<div class="quote-box">
+    Express bruges til at lave en simpel webserver i Node.js.<br>
+En server kræver oprettelse af en app, definering af ruter og en lytter på en port.<br>
+app.get() håndterer HTTP GET-anmodninger og sender et svar tilbage.<br>
+Middleware kan bruges til at håndtere requests, f.eks. express.json() til at parse JSON-data.<br>
+Serveren startes med app.listen(port, callback), hvor den venter på anmodninger.<br>
+Kan håndtere både statisk og dynamisk data, ofte som JSON.<br>
+Typisk kombineret med REST API'er til at sende og modtage data fra en client.<br>
+</div>
+
+<h2>
+    Understands how to send data with GET requests over HTTP and knows how to do it in Express.
+</h2>
+<div class="quote-box">
+    GET requests bruges til at hente data fra en server uden at ændre noget.<br>
+En URL kan indeholde parametre eller query strings til at sende ekstra information.<br>
+Express håndterer GET requests med app.get(path, callback), hvor req indeholder data fra anmodningen.<br>
+req.query bruges til at læse query parameters (name = Oskar).<br>
+req.params bruges til at læse dynamiske ruteparametre (/user/:id).<br>
+Data kan sendes som JSON med res.json() eller som tekst med res.send().<br>
+Klienten kan lave en GET request med fetch() i JavaScript eller via browseren.<br>
+</div>
+
+<h2>
+    Understands node_modules.
+</h2>
+<div class="quote-box">
+    node_modules er en mappe, hvor NPM gemmer installerede pakker for et projekt.<br>
+Indeholder alle afhængigheder samt deres egne afhængigheder (nested struktur).<br>
+Kan blive meget stor, da hver pakke kan have sine egne afhængigheder.<br>
+Ikke nødvendigt at gemme i Git, da pakken kan geninstalleres via npm install baseret på package.json.<br>
+Bør ignoreres i .gitignore for at undgå unødvendige filer i versionskontrol.<br>
+Fjernes helt fra projektet med rm -rf node_modules og kan genskabes med npm install.<br>
+Mappen bør ikke ændres manuelt, da pakker styres via package.json og package-lock.json.<br>
+</div>
+
+<h2>
+    code snippets:
+</h2>
+<div class="quote-box">
+    <h2>
+        code snippets:
+    </h2>
+    <div class="quote-box">
+        const express = require('express');<br>
+    const app = express();<br>
+    <br>
+    app.use(express.json());<br>
+    <br>
+    app.get("/", (req, res) => {<br>
+        res.send({ data: "This is the root route" });<br>
+    });<br>
+    <br>
+    app.get("/blablabla", (req, res) => {<br>
+        res.send( {data: "blablabla" });<br>
+    });<br>
+    <br>
+    app.get("/yourfavoritenumber/:favoriteNumber", (req, res) => {<br>
+        console.log(req.params.favoriteNumber)<br>
+        res.send({ data: `dit ynglings tal er: ${req.params.favoriteNumber}` });<br>
+    });<br>
+    <br>
+    <br>
+    app.get("/favoritethings/:favoriteanimal/:favoriteflower", (req, res) => {<br>
+        console.log(req.params.favoriteanimal);<br>
+        res.send({ data: `dit ynglings dyr er: ${req.params.favoriteanimal} og din ynglings blomst er: ${req.params.favoriteflower}`})<br>
+    });<br>
+    <br>
+    // assignment<br>
+    <br>
+    app.get("/search", (req, res) => {<br>
+        console.log(req.query);<br>
+        res.send({ data: `You searched for ${req.query.q}`});<br>
+    });<br>
+    <br>
+    app.post("/favoritepoliticians", (req, res) => {<br>
+        console.log(req.body);<br>
+        res.send({ data: req.body });<br>
+    });<br>
+    <br>
+    // http://localhost:8080/search?q=my%20search%20and%20a%20quary<br>
+    <br>
+    // assignment<br>
+    <br>
+    app.post("/favoriteplanes", (req, res) => {<br>
+        console.log(req.body);<br>
+        res.send({ data: <br>
+            "A350 neo"<br>
+        })<br>
+    });<br>
+    <br>
+    app.get("/redirecttofavoritethings", (req, res) => {<br>
+        res.redirect("/favoritethings/tulips/seaLions");<br>
+    });<br>
+    <br>
+    app.get("/welcomepage", (res, req) => {<br>
+        res.sendFile('./index.html');<br>
+    });<br>
+    <br>
+    console.log(__dirname);<br>
+    <br>
+    <br>
+    /*<br>
+        create a /proxy that calls the google homepage<br>
+    */<br>
+    <br>
+    app.get("/proxy", (req, res) => {<br>
+        fetch("https://www.google.com")<br>
+        .then(response => response.text())<br>
+        .then((result) => res.send(result));<br>
+    });<br>
+    <br>
+    <br>
+    app.listen(8080);<br>
+    </div>
+</div>

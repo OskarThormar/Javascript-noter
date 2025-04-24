@@ -1,0 +1,127 @@
+<h2>
+    Can work with Git in the terminal.
+</h2>
+<div class="quote-box">
+    <p>
+        git init  # Initialiserer et nyt Git-repositorie<br>
+        git status  # Tjekker status på filer (ændrede, staged, committed)<br>
+        git add .  # Tilføjer alle ændrede filer til staging<br>
+        git commit -m "Beskriv hvad ændringen gør"  # Gemmer ændringer med en beskrivelse<br>
+        git push origin main  # Skubber ændringer til fjernlageret<br>
+        git pull origin main  # Henter de nyeste ændringer fra fjernlageret<br>
+    </p>
+</div>
+<h2>
+    Understand and work with data types in Javascript.
+</h2>
+<div class="quote-box">
+    <p>
+        // primitivetyper <br>
+        Number → const age = 34; <br>
+        String → const name = "Oskar"; <br>
+        Boolean → const isStudent = false; <br>
+        // referencetyper <br>
+        Object → { key: "value" } <br>
+        Array → [1, 2, 3] <br>
+        Function → function myFunc() {}
+    </p>
+</div>
+
+<h2>
+    Can explain what Node.js is and how to run files with it.
+</h2>
+<div class="quote-box">
+    <p>
+        node app.js         // skriv en gang, hvis ændringer sker skal man skrive igen <br>
+        nodemon app.js      // automatisk sender kode ændringer til runtime, men skal køres igen hvis html ændrer sig.<br>
+    </p>
+</div>
+<h2>
+    Understands type coercion and strategies to avoid it.
+</h2>
+<div class="quote-box">
+    console.log("5" + 3); // "53" (String, ikke 8!)<br>
+    console.log("5" - 3); // 2 (Number)<br>
+    console.log(Number("5") + 3); // 8 <br>
+    <br>
+    console.log(5 == "5"); // true  (pga. coercion)<br>
+    console.log(5 === "5"); // false (ingen coercion)<br>
+</div>
+
+<h2>
+    Can design a REST API.
+</h2>
+<h2>
+    Knows the three REST conventions we follow: <br>
+    1. Using the right HTTP verb, <br>
+    2. Ordering, <br>3. Naming (noun, plural) that maps to collections in your system.
+</h2>
+
+<div class="quote-box">
+    GET → Hent data<br>
+    POST → Opret data<br>
+    PUT → Opdater data<br>
+    PATCH → Ændrer udvalgt data<br>
+    DELETE → Slet data<br>
+    <br>
+    /users → Henter alle brugere (GET)<br>
+    /users/1 → Henter bruger med ID 1 (GET)<br>
+    /users → Opretter en ny bruger (POST)<br>
+    <br>
+    GET /products <br>
+    GET /getProducts // ikke RESTful<br>
+    GET /product // entalsnavn så forkert
+</div>
+<h2>
+    While using a linter is not a requirement, having clean code is.<br>
+    snippets:
+</h2>
+
+<div class="quote-box">
+    console.log(getRandomInt(0, 10));<br>
+<br>
+    function getRandomInt(min, max) {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return Math.floor(Math.random() * (max + 1 - min) - min);<br>
+    }<br>
+<br>
+    const getRandomIntAnonymousFunction = function (min, max) {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return Math.floor(Math.random() * (max + 1 - min) - min);<br>
+    };<br>
+<br>
+    const getRandomIntArrowFunction =   (min, max) => {<br>
+	    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return Math.floor(Math.random() * (max + 1 - min) - min);<br>
+    };<br>
+<br>
+// action er en callback function<br>
+// a callback function is a functio nthat is passed a a parameter to another function<br>
+// possibly with the aim of calling it later<br>
+<br>
+                        // name: string  action: function<br>
+function genericPerformer(name, action) {<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return action(name);<br>
+};<br>
+
+//  Lasse coding<br>
+const codingAction = (name) => {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return `${name} likes coding`;<br>
+};<br>
+<br>
+console.log(genericPerformer("Lasse", codingAction));<br>
+<br>
+// Andreas sleeping<br>
+<br>
+function sleepingAction(name) {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return `${name} loves sleeping`;<br>
+}<br>
+<br>
+console.log(genericPerformer("Andreas", sleepingAction));<br>
+<br>
+const boxingAction = (name) => { return `${name} owns at boxing`};<br>
+<br>
+console.log(genericPerformer("Tara", boxingAction));<br>
+</div>
+
+
+
+
+
